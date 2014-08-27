@@ -1,5 +1,5 @@
 name             'snort'
-maintainer       'goncalo.pereira@digitaslbi.com'
+maintainer       'Goncalo Pereira'
 maintainer_email 'goncalo.pereira@digitaslbi.com'
 license          'All rights reserved'
 description      'Installs/Configures snort'
