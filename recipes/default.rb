@@ -13,16 +13,10 @@ yum_package daq_path do
 	action :nothing
 end
 
-snort_path = "#{Chef::Config[:file_cache_path]}/snort.rpm"
-
-remote_file snort_path do
-	source node["snort_rpm_url"]
-	action :create_if_missing
-	notifies :install, "yum_package[#{snort_path}]", :immediately
-end
-
-yum_package snort_path do
-	action :nothing
+if node["snort_yum_repo"] == false 
+	include_recipe "snort::_install_snort_remote_file"  
+else
+	include_recipe "snort::_install_snort_repo"
 end
 
 community_compressed_file = "#{Chef::Config[:file_cache_path]}/community.tar.gz"
